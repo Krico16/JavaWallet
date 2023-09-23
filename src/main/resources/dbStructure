@@ -1,0 +1,46 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Enum wallet_type {
+  DEBIT
+  CREDIT
+}
+
+Enum transaction_status {
+  COMPLETED
+  PROCCESING
+  CANCELLED
+}
+
+Table users {
+  // User Document hashed as uuid
+  id uuid [primary key]
+  document_number varchar
+  names varchar
+  lastname varchar
+  email varchar
+  password varchar
+  isActive boolean
+  created_at timestamp
+}
+
+Table wallet {
+  wallet_id uuid [primary key]
+  wallet_type wallet_type
+  user_id uuid
+  available_amount float
+  restricted_amount float
+}
+
+Table transactions {
+  transaction_id uuid [primary key]
+  wallet_sender uuid
+  wallet_reciever uuid
+  amount float
+  status transaction_status
+  created_at timestamp
+}
+
+Ref: users.id < wallet.user_id
+Ref: wallet.wallet_id <> transactions.wallet_sender
+Ref: wallet.wallet_id <> transactions.wallet_reciever
