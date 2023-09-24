@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public interface WalletRepository extends CrudRepository<WalletRepository, UUID> {
+public interface WalletRepository extends CrudRepository<WalletEntity, UUID> {
 
     @Query(value = "select w from wallet w where w.user_id in :ids")
     Set<WalletEntity> selectFromUsers(@Param("ids") List<UUID> walletIds);

@@ -8,7 +8,7 @@ Enum wallet_type {
 
 Enum transaction_status {
   COMPLETED
-  PROCCESING
+  PROCESSING
   CANCELLED
 }
 
@@ -35,7 +35,7 @@ Table wallet {
 Table transactions {
   transaction_id uuid [primary key]
   wallet_sender uuid
-  wallet_reciever uuid
+  wallet_receiver uuid
   amount float
   status transaction_status
   created_at timestamp

@@ -7,7 +7,7 @@ import xyz.krico16.bankapp.domain.entities.TransactionEntity;
 import java.util.Set;
 import java.util.UUID;
 
-public interface TransactionRepository extends JpaRepository<TransactionRepository, UUID> {
+public interface TransactionRepository extends JpaRepository<TransactionEntity, UUID> {
 
     @Query("select t from transactions t where t.sender_wallet = :id or t.receiver_wallet = :id")
     Set<TransactionEntity> selectById(UUID id);

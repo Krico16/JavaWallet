@@ -2,6 +2,9 @@ package xyz.krico16.bankapp.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity(name = "users")
@@ -23,6 +26,11 @@ public class UsersEntity {
 
     @Builder.Default
     private boolean isActive = true;
+
+    @Column
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime created_at;
 
 
     @PrePersist
