@@ -1,3 +1,5 @@
+drop table if exists "users";
+
 create TYPE wallet_type as ENUM ('DEBIT','CREDIT');
 
 create type transaction_status as ENUM ('CREATED','PROCESSING','FAILED','COMPLETED');
@@ -10,7 +12,7 @@ create table if NOT EXISTS "users"
     last_name       varchar(60),
     email           varchar(100),
     password        varchar(100),
-    isActive        bool,
+    is_Active        bool,
     created_at      timestamp
     );
 

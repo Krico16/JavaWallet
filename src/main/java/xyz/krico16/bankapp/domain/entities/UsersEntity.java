@@ -36,5 +36,6 @@ public class UsersEntity {
     @PrePersist
     public void createUser() {
         this.id = UUID.randomUUID();
+        this.created_at = LocalDateTime.now();
     }
 }
