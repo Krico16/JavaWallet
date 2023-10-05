@@ -11,6 +11,8 @@ import xyz.krico16.bankapp.domain.entities.UsersEntity;
 import xyz.krico16.bankapp.domain.repositories.UsersRepository;
 import xyz.krico16.bankapp.infrastructure.abstract_service.IUserService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Transactional
@@ -52,6 +54,12 @@ public class UserService implements IUserService {
         return this.entityToResponse(userFromPersistence);
     }
 
+    @Override
+    public List<UserResponse> findByIdIsIn(List<UUID> idList) {
+        var userListFromPersistence = this.usersRepository.findByIdIsIn(idList).orElseThrow();
+        return this.entityListToResponse(userListFromPersistence);
+    }
+
 
     private UserResponse entityToResponse(UsersEntity usersEntity) {
         var response = new UserResponse();
@@ -60,4 +68,16 @@ public class UserService implements IUserService {
         return response;
     }
 
+    private List<UserResponse> entityListToResponse(List<UsersEntity> usersEntityList) {
+        List<UserResponse> responseList = new ArrayList<>();
+
+        for (UsersEntity e: usersEntityList) {
+            var response = new UserResponse();
+            BeanUtils.copyProperties(e,response);
+
+            responseList.add(response);
+        }
+
+        return responseList;
+    }
 }
