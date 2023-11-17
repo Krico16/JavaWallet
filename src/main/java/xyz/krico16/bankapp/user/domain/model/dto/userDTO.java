@@ -1,26 +1,23 @@
-package xyz.krico16.bankapp.application.DTOModels.response;
+package xyz.krico16.bankapp.user.domain.model.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.UUID;
 
-@NoArgsConstructor
 @AllArgsConstructor
-@Data
-@Builder
-
-public class UserResponse {
+@NoArgsConstructor
+@Getter
+@Setter
+public class userDTO {
 
     private UUID id;
-
     private String document_number;
-
     private String names;
-    private String last_name;
+    private String lastnames;
     private String email;
     private String password;
-    private boolean isActive;
+
 }

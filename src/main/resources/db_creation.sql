@@ -9,10 +9,10 @@ create table if NOT EXISTS "users"
     id              uuid primary key not null,
     document_number varchar(20),
     names           varchar(30),
-    last_name       varchar(60),
+    lastnames       varchar(60),
     email           varchar(100),
     password        varchar(100),
-    is_Active        bool,
+    is_active        bool,
     created_at      timestamp
     );
 
